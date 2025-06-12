@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HR Analytics Dashboard - Project Roadmap</title>
+    <title>HR-аналитика - Дорожная карта проекта</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt@0.6.0/dist/frappe-gantt.min.css">
     <style>
@@ -139,127 +139,77 @@
         .nav-pills .nav-link {
             color: #007bff;
         }
-        .timeline-vis-container {
-            background-color: #2c3e50;
-            border-radius: 10px;
-            padding: 1rem;
-            margin: 0 auto;
-            max-width: 1000px;
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            .header {
+                padding: 2rem 1rem;
+            }
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-container.left, .timeline-container.right {
+                left: 0%;
+            }
+            .right::after, .timeline-container::after {
+                left: 15px;
+            }
+            .kanban-board {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container-fluid p-4">
         <div class="header text-center">
-            <h1>HR Analytics Dashboard Project</h1>
-            <p class="lead">A comprehensive roadmap from initiation to deployment.</p>
+            <h1>Проект по HR-аналитике</h1>
+            <p class="lead">Комплексная дорожная карта от начала до внедрения.</p>
         </div>
 
         <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-roadmap-tab" data-bs-toggle="pill" data-bs-target="#pills-roadmap" type="button" role="tab" aria-controls="pills-roadmap" aria-selected="true">Project Roadmap</button>
+                <button class="nav-link active" id="pills-roadmap-tab" data-bs-toggle="pill" data-bs-target="#pills-roadmap" type="button" role="tab" aria-controls="pills-roadmap" aria-selected="true">Дорожная карта проекта</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-gantt-tab" data-bs-toggle="pill" data-bs-target="#pills-gantt" type="button" role="tab" aria-controls="pills-gantt" aria-selected="false">Gantt Chart</button>
+                <button class="nav-link" id="pills-gantt-tab" data-bs-toggle="pill" data-bs-target="#pills-gantt" type="button" role="tab" aria-controls="pills-gantt" aria-selected="false">Диаграмма Ганта</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-kanban-tab" data-bs-toggle="pill" data-bs-target="#pills-kanban" type="button" role="tab" aria-controls="pills-kanban" aria-selected="false">Kanban Board</button>
+                <button class="nav-link" id="pills-kanban-tab" data-bs-toggle="pill" data-bs-target="#pills-kanban" type="button" role="tab" aria-controls="pills-kanban" aria-selected="false">Канбан-доска</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-timeline-vis-tab" data-bs-toggle="pill" data-bs-target="#pills-timeline-vis" type="button" role="tab" aria-controls="pills-timeline-vis" aria-selected="false">Visual Timeline</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-summary-tab" data-bs-toggle="pill" data-bs-target="#pills-summary" type="button" role="tab" aria-controls="pills-summary" aria-selected="false">Summary</button>
+                <button class="nav-link" id="pills-summary-tab" data-bs-toggle="pill" data-bs-target="#pills-summary" type="button" role="tab" aria-controls="pills-summary" aria-selected="false">Сводка</button>
             </li>
         </ul>
 
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-roadmap" role="tabpanel" aria-labelledby="pills-roadmap-tab">
-                <h2 class="section-title text-center">Project Roadmap</h2>
+                <h2 class="section-title text-center">Дорожная карта проекта</h2>
                 <div class="timeline">
                     <!-- Timeline items will be injected by JavaScript -->
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-gantt" role="tabpanel" aria-labelledby="pills-gantt-tab">
-                <h2 class="section-title text-center">Gantt Chart</h2>
+                <h2 class="section-title text-center">Диаграмма Ганта</h2>
                 <div class="gantt-container">
                     <div id="gantt"></div>
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-kanban" role="tabpanel" aria-labelledby="pills-kanban-tab">
-                <h2 class="section-title text-center">Kanban Board</h2>
+                <h2 class="section-title text-center">Канбан-доска</h2>
                 <div class="kanban-board">
                     <!-- Kanban columns will be injected by JavaScript -->
                 </div>
             </div>
-            <div class="tab-pane fade" id="pills-timeline-vis" role="tabpanel" aria-labelledby="pills-timeline-vis-tab">
-                <h2 class="section-title text-center">Development Timeline</h2>
-                <div class="timeline-vis-container">
-                    <svg viewBox="0 0 900 650" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-                        <defs>
-                            <linearGradient id="timeline-bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#2a4a44;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#1e332f;stop-opacity:1" />
-                            </linearGradient>
-                             <linearGradient id="flame-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#f39c12;"/>
-                                <stop offset="100%" style="stop-color:#e74c3c;"/>
-                            </linearGradient>
-                            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                                <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                        </defs>
-                        <rect width="100%" height="100%" rx="10" fill="url(#timeline-bg-gradient)" />
-                        
-                        <path d="M 100 550 L 300 500 L 450 350 L 600 400 L 750 250" fill="none" stroke="#3498db" stroke-width="8"/>
-
-                        <g transform="translate(100, 550)">
-                            <circle r="25" fill="#e67e22"/>
-                            <text fill="white" font-weight="bold" text-anchor="middle" dy=".3em" font-size="16">01</text>
-                        </g>
-                        <text x="100" y="500" fill="white" font-size="18" text-anchor="middle">Foundation & Data Prep</text>
-                        <text x="100" y="475" fill="#bdc3c7" font-size="14" text-anchor="middle">(April - Early June)</text>
-
-                        <g transform="translate(300, 500)">
-                            <circle r="25" fill="#2ecc71"/>
-                            <text fill="white" font-weight="bold" text-anchor="middle" dy=".3em" font-size="16">02</text>
-                        </g>
-                        <text x="300" y="550" fill="white" font-size="18" text-anchor="middle">Core Dashboard Dev</text>
-                        <text x="300" y="575" fill="#bdc3c7" font-size="14" text-anchor="middle">(Mid June)</text>
-
-                        <g transform="translate(450, 350)">
-                            <circle r="25" fill="#9b59b6"/>
-                            <text fill="white" font-weight="bold" text-anchor="middle" dy=".3em" font-size="16">03</text>
-                        </g>
-                        <text x="450" y="300" fill="white" font-size="18" text-anchor="middle">Expansion & Integrations</text>
-                        <text x="450" y="275" fill="#bdc3c7" font-size="14" text-anchor="middle">(Late June)</text>
-
-                        <g transform="translate(600, 400)">
-                            <circle r="25" fill="#e74c3c"/>
-                            <text fill="white" font-weight="bold" text-anchor="middle" dy=".3em" font-size="16">04</text>
-                        </g>
-                        <text x="600" y="450" fill="white" font-size="18" text-anchor="middle">Finalization & Rollout</text>
-                        <text x="600" y="475" fill="#bdc3c7" font-size="14" text-anchor="middle">(July)</text>
-                        
-                        <g transform="translate(750, 250) rotate(-30) scale(0.9)">
-                            <path d="M 0 55 C -20 75, 20 75, 0 95 C -20 115, 20 115, 0 135 L -15 55 L 15 55 Z" fill="url(#flame-gradient)"/>
-                            <path d="M 0,60 C 30,20 30,-30 0,-80 C -30,-30 -30,20 0,60 Z" fill="#ced4da" filter="url(#glow)"/>
-                            <path d="M -20,50 L -45,70 L -15,55 Z" fill="#adb5bd"/>
-                            <path d="M 20,50 L 45,70 L 15,55 Z" fill="#adb5bd"/>
-                            <circle cx="0" cy="-20" r="15" fill="#3498db" stroke="white" stroke-width="3"/>
-                        </g>
-
-                        <text x="50" y="70" font-size="36" font-weight="bold" fill="white">Development Timeline</text>
-                        <text x="50" y="100" font-size="18" fill="#bdc3c7">HR Analytics Dashboard</text>
-                    </svg>
-                </div>
-            </div>
             <div class="tab-pane fade" id="pills-summary" role="tabpanel" aria-labelledby="pills-summary-tab">
-                <h2 class="section-title text-center">Project Summary</h2>
+                <h2 class="section-title text-center">Сводка по проекту</h2>
                 <div class="row">
                     <div class="col-md-6">
                         <canvas id="taskStatusChart"></canvas>
@@ -279,58 +229,58 @@
         document.addEventListener('DOMContentLoaded', function () {
             // --- DATA ---
             const tasks = [
-                { id: 'task1', name: 'Project Kick-off & HR Meeting', start: '2024-04-01', end: '2024-04-07', progress: 100, dependencies: '', custom_class: 'bar-milestone', category: 'Planning' },
-                { id: 'task2', name: '1C:ZUP & Qlik Sense Integration', start: '2024-04-01', end: '2024-04-08', progress: 100, dependencies: '', category: 'Integration' },
-                { id: 'task3', name: 'TZ Meeting & Scope Discussion', start: '2024-04-09', end: '2024-04-12', progress: 100, dependencies: 'task1', category: 'Planning' },
-                { id: 'task4', name: 'Data Extraction & Cleaning', start: '2024-04-09', end: '2024-06-07', progress: 100, dependencies: 'task2, task3', category: 'Data' },
-                { id: 'task5', name: 'Sample Dashboard Creation', start: '2024-05-01', end: '2024-05-07', progress: 100, dependencies: 'task4', category: 'Development' },
-                { id: 'task6', name: "Umida's Presentation Dashboard", start: '2024-06-08', end: '2024-06-17', progress: 50, dependencies: 'task5', category: 'Development' },
-                { id: 'task7', name: 'Contact Jobster & Plan Integration', start: '2024-06-10', end: '2024-06-14', progress: 25, dependencies: 'task6', category: 'Integration' },
-                { id: 'task8', name: 'Jobster & Qlik Sense Integration', start: '2024-06-15', end: '2024-06-25', progress: 0, dependencies: 'task7', category: 'Integration' },
-                { id: 'task9', name: 'Presentation to HR Team', start: '2024-06-18', end: '2024-06-18', progress: 0, dependencies: 'task6', custom_class: 'bar-milestone', category: 'Meetings' },
-                { id: 'task10', name: 'Recruiting Dashboard Development', start: '2024-06-19', end: '2024-06-30', progress: 0, dependencies: 'task9', category: 'Development' },
-                { id: 'task11', name: 'Overall Project Completion', start: '2024-06-30', end: '2024-06-30', progress: 0, dependencies: 'task8, task10', custom_class: 'bar-milestone', category: 'Milestone' },
-                { id: 'task12', name: 'Testing & Validation Phase', start: '2024-07-01', end: '2024-07-07', progress: 0, dependencies: 'task11', category: 'QA' },
-                { id: 'task13', name: 'Final Deployment', start: '2024-07-08', end: '2024-07-15', progress: 0, dependencies: 'task12', custom_class: 'bar-milestone', category: 'Deployment' }
+                { id: 'task1', name: 'Старт проекта и встреча с HR', start: '2024-04-01', end: '2024-04-07', progress: 100, dependencies: '', custom_class: 'bar-milestone', category: 'Планирование' },
+                { id: 'task2', name: 'Интеграция 1C:ЗУП и Qlik Sense', start: '2024-04-01', end: '2024-04-08', progress: 100, dependencies: '', category: 'Интеграция' },
+                { id: 'task3', name: 'Встреча по ТЗ и обсуждение объема работ', start: '2024-04-09', end: '2024-04-12', progress: 100, dependencies: 'task1', category: 'Планирование' },
+                { id: 'task4', name: 'Извлечение и очистка данных', start: '2024-04-09', end: '2024-06-07', progress: 100, dependencies: 'task2, task3', category: 'Данные' },
+                { id: 'task5', name: 'Создание образца дашборда', start: '2024-05-01', end: '2024-05-07', progress: 100, dependencies: 'task4', category: 'Разработка' },
+                { id: 'task6', name: 'Дашборд для презентации Умида опа', start: '2024-06-08', end: '2024-06-17', progress: 50, dependencies: 'task5', category: 'Разработка' },
+                { id: 'task7', name: 'Связаться с Jobster и спланировать интеграцию', start: '2024-06-10', end: '2024-06-14', progress: 25, dependencies: 'task6', category: 'Интеграция' },
+                { id: 'task8', name: 'Интеграция Jobster и Qlik Sense', start: '2024-06-15', end: '2024-06-25', progress: 0, dependencies: 'task7', category: 'Интеграция' },
+                { id: 'task9', name: 'Презентация для команды HR', start: '2024-06-18', end: '2024-06-18', progress: 0, dependencies: 'task6', custom_class: 'bar-milestone', category: 'Встречи' },
+                { id: 'task10', name: 'Разработка дашборда для рекрутинга', start: '2024-06-19', end: '2024-06-30', progress: 0, dependencies: 'task9', category: 'Разработка' },
+                { id: 'task11', name: 'Общее завершение проекта', start: '2024-06-30', end: '2024-06-30', progress: 0, dependencies: 'task8, task10', custom_class: 'bar-milestone', category: 'Контрольная точка' },
+                { id: 'task12', name: 'Этап тестирования и валидации', start: '2024-07-01', end: '2024-07-07', progress: 0, dependencies: 'task11', category: 'Контроль качества' },
+                { id: 'task13', name: 'Финальное развертывание', start: '2024-07-08', end: '2024-07-15', progress: 0, dependencies: 'task12', custom_class: 'bar-milestone', category: 'Внедрение' }
             ];
 
             const roadmapPhases = [
                 {
-                    title: "Phase 1: Foundation & Data Prep",
-                    date: "April - Early June 2024",
-                    description: "Initial meetings, integrating core systems, and preparing all necessary data for analysis. This phase sets the stage for the entire project.",
-                    tasks: ["Project Kick-off", "1C:ZUP Integration", "Data Cleaning"]
+                    title: "Этап 1: Основа и подготовка данных",
+                    date: "Апрель - начало июня 2024",
+                    description: "Начальные встречи, интеграция основных систем и подготовка всех необходимых данных для анализа. Этот этап закладывает основу для всего проекта.",
+                    tasks: ["Старт проекта", "Интеграция 1C:ZUP", "Очистка данных"]
                 },
                 {
-                    title: "Phase 2: Core Dashboard Development",
-                    date: "Mid June 2024",
-                    description: "Development of the main dashboard based on the presentation slides, focusing on key HR metrics like turnover, gender distribution, and more.",
-                    tasks: ["Umida's Dashboard", "Presentation to HR"]
+                    title: "Этап 2: Разработка основного дашборда",
+                    date: "Середина июня 2024",
+                    description: "Разработка основного дашборда на основе слайдов презентации с упором на ключевые HR-метрики, такие как текучесть кадров, гендерное распределение и другие.",
+                    tasks: ["Дашборд Умида опа", "Презентация для HR"]
                 },
                 {
-                    title: "Phase 3: Expansion & Integrations",
-                    date: "Late June 2024",
-                    description: "Integrating with external systems like Jobster and developing the specialized Recruiting Dashboard.",
-                    tasks: ["Jobster Integration", "Recruiting Dashboard"]
+                    title: "Этап 3: Расширение и интеграции",
+                    date: "Конец июня 2024",
+                    description: "Интеграция с внешними системами, такими как Jobster, и разработка специализированного дашборда для рекрутинга.",
+                    tasks: ["Интеграция с Jobster", "Дашборд для рекрутинга"]
                 },
                 {
-                    title: "Phase 4: Finalization & Rollout",
-                    date: "July 2024",
-                    description: "Comprehensive testing, validation with stakeholders, and the final deployment of the HR Analytics Dashboard.",
-                    tasks: ["Testing & Validation", "Deployment"]
+                    title: "Этап 4: Завершение и внедрение",
+                    date: "Июль 2024",
+                    description: "Комплексное тестирование, валидация с заинтересованными сторонами и финальное развертывание дашборда HR-аналитики.",
+                    tasks: ["Тестирование и валидация", "Внедрение"]
                 }
             ];
 
             const kanbanTasks = [
-                { title: '1C:ZUP & Qlik Sense Integration', status: 'done', period: 'Apr 1 - Apr 8' },
-                { title: 'Data Extraction & Cleaning', status: 'done', period: 'Apr 9 - Jun 7' },
-                { title: 'Sample Dashboard Creation', status: 'done', period: 'May 1 - May 7' },
-                { title: "Umida's Presentation Dashboard", status: 'in-progress', period: 'Jun 8 - Jun 17' },
-                { title: 'Contact Jobster & Plan Integration', status: 'in-progress', period: 'Jun 10 - Jun 14' },
-                { title: 'Jobster & Qlik Sense Integration', status: 'to-do', period: 'Jun 15 - Jun 25' },
-                { title: 'Recruiting Dashboard Development', status: 'to-do', period: 'Jun 19 - Jun 30' },
-                { title: 'Testing & Validation Phase', status: 'to-do', period: 'Jul 1 - Jul 7' },
-                { title: 'Final Deployment', status: 'to-do', period: 'Jul 8 - Jul 15' }
+                { title: 'Интеграция 1C:ЗУП и Qlik Sense', status: 'done', period: 'Apr 1 - Apr 8' },
+                { title: 'Извлечение и очистка данных', status: 'done', period: 'Apr 9 - Jun 7' },
+                { title: 'Создание образца дашборда', status: 'done', period: 'May 1 - May 7' },
+                { title: 'Дашборд для презентации Умида опа', status: 'in-progress', period: 'Jun 8 - Jun 17' },
+                { title: 'Связаться с Jobster и спланировать интеграцию', status: 'in-progress', period: 'Jun 10 - Jun 14' },
+                { title: 'Интеграция Jobster и Qlik Sense', status: 'to-do', period: 'Jun 15 - Jun 25' },
+                { title: 'Разработка дашборда для рекрутинга', status: 'to-do', period: 'Jun 19 - Jun 30' },
+                { title: 'Этап тестирования и валидации', status: 'to-do', period: 'Jul 1 - Jul 7' },
+                { title: 'Финальное развертывание', status: 'to-do', period: 'Jul 8 - Jul 15' }
             ];
 
             // --- RENDER FLAGS ---
@@ -351,7 +301,7 @@
                                 <h2>${phase.title}</h2>
                                 <small class="text-muted">${phase.date}</small>
                                 <p>${phase.description}</p>
-                                ${phase.tasks.map(t => `<span class="badge bg-primary me-1">${t}</span>`).join('')}
+                                <ul>${phase.tasks.map(t => `<li>${t}</li>`).join('')}</ul>
                             </div>
                         `;
                         timelineContainer.appendChild(phaseEl);
@@ -361,141 +311,162 @@
 
             function renderGantt() {
                 if (ganttRendered) return;
-                if (document.getElementById('gantt')) {
-                    const gantt = new Gantt("#gantt", tasks, {
-                        on_click: (task) => console.log(task),
-                        on_date_change: (task, start, end) => console.log(task, start, end),
-                        on_progress_change: (task, progress) => console.log(task, progress),
-                        header_height: 60,
-                        bar_height: 25,
-                        padding: 20
-                    });
-                    ganttRendered = true;
-                }
+                const gantt_tasks = tasks.map(t => ({...t, id: t.id, name: t.name, start: t.start, end: t.end, progress: t.progress, dependencies: t.dependencies, custom_class: t.custom_class }));
+                const gantt = new Gantt("#gantt", gantt_tasks, {
+                    header_height: 50,
+                    column_width: 30,
+                    step: 24,
+                    view_modes: ['Quarter Day', 'Half Day', 'Day', 'Week', 'Month'],
+                    bar_height: 20,
+                    bar_corner_radius: 3,
+                    arrow_curve: 5,
+                    padding: 18,
+                    view_mode: 'Week',
+                    date_format: 'YYYY-MM-DD',
+                    language: 'ru', 
+                    custom_popup_html: function(task) {
+                        return `
+                            <div class="gantt-popup">
+                                <h5>${task.name}</h5>
+                                <p><strong>Продолжительность:</strong> ${task.start} - ${task.end}</p>
+                                <p><strong>Прогресс:</strong> ${task.progress}%</p>
+                            </div>
+                        `;
+                    }
+                });
+                ganttRendered = true;
             }
 
             function renderKanban() {
                 if (kanbanRendered) return;
-                const kanbanBoard = document.querySelector('.kanban-board');
-                if (kanbanBoard && kanbanBoard.childElementCount === 0) {
-                    const columns = {
-                        'to-do': 'To Do',
-                        'in-progress': 'In Progress',
-                        'done': 'Done'
-                    };
-                    const statusMap = {
-                        'to-do': 'status-to-do',
-                        'in-progress': 'status-in-progress',
-                        'done': 'status-done'
+                const board = document.querySelector('.kanban-board');
+                if (!board) return;
+                
+                board.innerHTML = '';
+                
+                const columns = {
+                    'to-do': { title: 'К выполнению', tasks: [] },
+                    'in-progress': { title: 'В процессе', tasks: [] },
+                    'done': { title: 'Готово', tasks: [] }
+                };
+
+                kanbanTasks.forEach(task => {
+                    if (columns[task.status]) {
+                        columns[task.status].tasks.push(task);
                     }
+                });
 
-                    Object.keys(columns).forEach(key => {
-                        const columnEl = document.createElement('div');
-                        columnEl.className = 'kanban-column';
-                        columnEl.innerHTML = `<h3>${columns[key]}</h3>`;
-                        kanbanBoard.appendChild(columnEl);
-
-                        kanbanTasks.filter(t => t.status === key).forEach(task => {
-                            const card = document.createElement('div');
-                            card.className = `kanban-card ${statusMap[key]}`;
-                            card.innerHTML = `<h5>${task.title}</h5><p>${task.period}</p>`;
-                            columnEl.appendChild(card);
-                        });
+                for (const status in columns) {
+                    const columnEl = document.createElement('div');
+                    columnEl.className = 'kanban-column';
+                    let cardsHtml = '';
+                    columns[status].tasks.forEach(task => {
+                        cardsHtml += `
+                            <div class="kanban-card status-${status}">
+                                <h5>${task.title}</h5>
+                                <p>${task.period}</p>
+                            </div>
+                        `;
                     });
-                    kanbanRendered = true;
+                    columnEl.innerHTML = `<h3>${columns[status].title}</h3>${cardsHtml}`;
+                    board.appendChild(columnEl);
                 }
+                kanbanRendered = true;
             }
-
+            
             function renderSummaryCharts() {
                 if (summaryRendered) return;
+                const taskStatusCtx = document.getElementById('taskStatusChart').getContext('2d');
+                const taskCategoryCtx = document.getElementById('taskCategoryChart').getContext('2d');
 
-                const taskStatusCtx = document.getElementById('taskStatusChart');
-                if (taskStatusCtx) {
-                    const doneCount = kanbanTasks.filter(t => t.status === 'done').length;
-                    const inProgressCount = kanbanTasks.filter(t => t.status === 'in-progress').length;
-                    const todoCount = kanbanTasks.filter(t => t.status === 'to-do').length;
+                const statusCounts = tasks.reduce((acc, task) => {
+                    let status = 'К выполнению';
+                    if (task.progress === 100) status = 'Готово';
+                    else if (task.progress > 0) status = 'В процессе';
+                    acc[status] = (acc[status] || 0) + 1;
+                    return acc;
+                }, {});
 
-                    new Chart(taskStatusCtx, {
-                        type: 'doughnut',
-                        data: {
-                            labels: ['Done', 'In Progress', 'To Do'],
-                            datasets: [{
-                                label: 'Task Status',
-                                data: [doneCount, inProgressCount, todoCount],
-                                backgroundColor: ['#28a745', '#ffc107', '#dc3545'],
-                                hoverOffset: 4
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            plugins: {
-                                legend: { position: 'top' },
-                                title: { display: true, text: 'Task Status Overview' }
-                            }
+                new Chart(taskStatusCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: Object.keys(statusCounts),
+                        datasets: [{
+                            data: Object.values(statusCounts),
+                            backgroundColor: ['#28a745', '#ffc107', '#dc3545'],
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { position: 'top' },
+                            title: { display: true, text: 'Обзор статусов задач' }
                         }
-                    });
-                }
-
-                const taskCategoryCtx = document.getElementById('taskCategoryChart');
-                if (taskCategoryCtx) {
-                    const categories = [...new Set(tasks.map(t => t.category))];
-                    const categoryCount = categories.map(cat => tasks.filter(t => t.category === cat).length);
-
-                    new Chart(taskCategoryCtx, {
-                        type: 'bar',
-                        data: {
-                            labels: categories,
-                            datasets: [{
-                                label: 'Number of Tasks by Category',
-                                data: categoryCount,
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)',
-                                    'rgba(255, 206, 86, 0.5)', 'rgba(75, 192, 192, 0.5)',
-                                    'rgba(153, 102, 255, 0.5)', 'rgba(255, 159, 64, 0.5)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            indexAxis: 'y',
-                            responsive: true,
-                            plugins: {
-                                legend: { display: false },
-                                title: { display: true, text: 'Task Distribution by Category' }
-                            }
+                    }
+                });
+                
+                const categoryCounts = tasks.reduce((acc, task) => {
+                    acc[task.category] = (acc[task.category] || 0) + 1;
+                    return acc;
+                }, {});
+                
+                new Chart(taskCategoryCtx, {
+                    type: 'bar',
+                     data: {
+                        labels: Object.keys(categoryCounts),
+                        datasets: [{
+                            label: 'Количество задач',
+                            data: Object.values(categoryCounts),
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.7)',
+                                'rgba(54, 162, 235, 0.7)',
+                                'rgba(255, 206, 86, 0.7)',
+                                'rgba(75, 192, 192, 0.7)',
+                                'rgba(153, 102, 255, 0.7)',
+                                'rgba(255, 159, 64, 0.7)'
+                            ],
+                             borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        plugins: {
+                            legend: { display: false },
+                            title: { display: true, text: 'Задачи по категориям' }
                         }
-                    });
-                }
+                    }
+                });
+
                 summaryRendered = true;
             }
 
-
-            // --- INITIAL & EVENT-DRIVEN RENDERING ---
-
-            // Render the default active tab content
-            renderRoadmap();
-
-            // Add event listeners to render content on tab switch
-            const tabElms = document.querySelectorAll('button[data-bs-toggle="pill"]');
-            tabElms.forEach(tab => {
-                tab.addEventListener('shown.bs.tab', (event) => {
-                    const targetTabId = event.target.getAttribute('data-bs-target');
-                    if (targetTabId === '#pills-gantt') {
+            // --- TAB HANDLING ---
+            const pills = document.querySelectorAll('#pills-tab button');
+            pills.forEach(pill => {
+                pill.addEventListener('shown.bs.tab', function (event) {
+                    if (event.target.id === 'pills-gantt-tab') {
                         renderGantt();
-                    } else if (targetTabId === '#pills-kanban') {
+                    } else if (event.target.id === 'pills-kanban-tab') {
                         renderKanban();
-                    } else if (targetTabId === '#pills-summary') {
+                    } else if (event.target.id === 'pills-summary-tab') {
                         renderSummaryCharts();
-                    } else if (targetTabId === '#pills-roadmap') {
+                    } else if (event.target.id === 'pills-roadmap-tab') {
                         renderRoadmap();
                     }
                 });
             });
+
+            // Initial render
+            renderRoadmap();
         });
     </script>
 </body>
